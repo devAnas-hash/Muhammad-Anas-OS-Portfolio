@@ -1,0 +1,599 @@
+/* ==========================================================================
+   Muhammad Anas OS - Base Configuration & Core Variables
+   ========================================================================== */
+:root {
+    --font-family: 'Courier New', Courier, monospace;
+    --cursor-color: rgba(0, 255, 100, 0.4);
+    
+    /* Dark OS Theme */
+    --bg-gradient: radial-gradient(circle, #1a1c23 0%, #0d0e12 100%);
+    --window-bg: rgba(25, 28, 36, 0.75);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --text-primary: #e2e8f0;
+    --text-accent: #38bdf8;
+    --taskbar-bg: rgba(15, 17, 23, 0.8);
+}
+
+[data-theme="hacker"] {
+    --bg-gradient: linear-gradient(180deg, #000000 0%, #050a05 100%);
+    --window-bg: rgba(0, 10, 0, 0.9);
+    --border-color: #00ff41;
+    --text-primary: #00ff41;
+    --text-accent: #39ff14;
+    --taskbar-bg: rgba(0, 5, 0, 0.95);
+    --font-family: 'Lucida Console', Monaco, monospace;
+}
+
+[data-theme="professional"] {
+    --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    --window-bg: rgba(255, 255, 255, 0.85);
+    --border-color: #94a3b8;
+    --text-primary: #1e293b;
+    --text-accent: #2563eb;
+    --taskbar-bg: rgba(241, 245, 249, 0.9);
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Custom Cursor Styling */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--text-accent);
+    border-radius: 50%;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 99999;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+    background-color: var(--cursor-color);
+}
+
+/* Glassmorphic Base Classes */
+.glass {
+    background: var(--window-bg);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   Boot Loader Sequencer
+   ========================================================================== */
+.boot-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: #000000;
+    color: #00ff41;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100000;
+}
+
+.boot-content { width: 80%; max-width: 600px; }
+.boot-logo { font-size: 3rem; margin-bottom: 20px; text-align: center; color: var(--text-accent); }
+.boot-title { font-size: 1.2rem; margin-bottom: 15px; font-weight: normal; }
+
+.progress-bar-container {
+    width: 100%; height: 6px; background: #222; border-radius: 3px; overflow: hidden; margin-bottom: 20px;
+}
+.progress-bar {
+    width: 0%; height: 100%; background: #00ff41; animation: standard-load 2.5s forwards linear;
+}
+
+.boot-logs {
+    height: 150px; overflow-y: auto; font-size: 0.85rem; line-height: 1.4; color: #888;
+}
+
+@keyframes standard-load { to { width: 100%; } }
+
+/* ==========================================================================
+   Desktop Layout Environment
+   ========================================================================== */
+.desktop-environment {
+    width: 100vw; height: calc(100vh - 50px); position: relative; padding: 20px;
+}
+
+.desktop-icons {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    grid-gap: 25px; max-height: 80%; width: fit-content; max-width: 400px;
+}
+
+.desktop-icon {
+    display: flex; flex-direction: column; align-items: center; cursor: pointer; text-align: center;
+}
+
+.icon-wrapper {
+    width: 65px; height: 65px; display: flex; justify-content: center; align-items: center;
+    font-size: 1.8rem; color: var(--text-accent); transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 8px;
+}
+
+.desktop-icon:hover .icon-wrapper {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.desktop-icon span { font-size: 0.8rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); word-break: break-all; }
+
+/* ==========================================================================
+   OS Modular System Windows Setup
+   ========================================================================== */
+.window {
+    position: absolute; min-width: 320px; min-height: 240px; width: 500px; max-width: 95%;
+    z-index: 10; overflow: hidden; display: flex; flex-direction: column;
+    animation: window-initiate 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes window-initiate {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.window-header {
+    padding: 10px 15px; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--border-color);
+    display: flex; justify-content: space-between; align-items: center; cursor: move; user-select: none;
+}
+
+.window-title { font-size: 0.85rem; font-weight: bold; color: var(--text-accent); }
+.window-controls { display: flex; gap: 8px; }
+
+.ctrl {
+    width: 12px; height: 12px; border-radius: 50%; border: none; cursor: pointer;
+}
+.ctrl.min { background: #ffbd44; }
+.ctrl.max { background: #00ca4e; }
+.ctrl.close { background: #ff605c; }
+
+.window-body { padding: 20px; overflow-y: auto; flex-grow: 1; font-size: 0.95rem; line-height: 1.5; }
+
+/* Custom Maximized Window Layout Override */
+.window.maximized {
+    width: 100vw !important; height: calc(100vh - 50px) !important; top: 0 !important; left: 0 !important; transform: none !important;
+}
+
+/* ==========================================================================
+   Internal Application Interface Structures
+   ========================================================================== */
+
+/* Terminal Custom Styling */
+.terminal-body { background: #000000 !important; color: #00ff41 !important; font-family: monospace; }
+.terminal-input-line { display: flex; align-items: center; margin-top: 10px; }
+.terminal-input-line input {
+    background: transparent; border: none; outline: none; color: inherit; font-family: inherit; font-size: inherit; flex-grow: 1;
+}
+
+/* Skills Layout Elements */
+.skills-container { display: flex; flex-direction: column; gap: 15px; }
+.skill-category h4 { color: var(--text-accent); margin-bottom: 8px; }
+.skill-item { margin-bottom: 8px; font-size: 0.85rem; }
+.meter { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; margin-top: 4px; }
+.meter > span { display: block; height: 100%; background: var(--text-accent); border-radius: 4px; }
+
+.btn-action { 
+    background: var(--text-accent); 
+    color: #000; 
+    font-weight: bold; 
+    padding: 10px 15px; 
+    border: none; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    display: inline-block; 
+    text-decoration: none; 
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.btn-action:active {
+    transform: translateY(0);
+}
+
+.btn-action.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Projects View Configuration Grid */
+.projects-grid { display: grid; grid-template-columns: 1fr; grid-gap: 15px; }
+@media(min-width: 480px) { .projects-grid { grid-template-columns: 1fr 1fr; } }
+.project-card { 
+    background: rgba(0,0,0,0.15); 
+    border: 1px solid var(--border-color); 
+    padding: 15px; 
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    background: rgba(0,0,0,0.25);
+    border-color: var(--text-accent);
+    transform: translateY(-4px);
+}
+
+.proj-img-placeholder { 
+    height: 100px; 
+    background: rgba(255,255,255,0.05); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    font-size: 2rem; 
+    border-radius: 4px; 
+    margin-bottom: 10px; 
+    color: var(--text-accent); 
+}
+
+.project-card h5 {
+    margin: 10px 0 5px;
+    color: var(--text-accent);
+}
+
+.project-card p {
+    margin: 0;
+    font-size: 0.85rem;
+    flex-grow: 1;
+}
+
+.tech-tags {
+    display: block;
+    margin: 8px 0;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.proj-actions { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 10px; 
+    flex-wrap: wrap;
+}
+
+.btn-link { 
+    font-size: 0.8rem; 
+    color: var(--text-accent); 
+    text-decoration: none; 
+    border: 1px solid var(--text-accent); 
+    padding: 5px 10px; 
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex: 1;
+    text-align: center;
+    min-width: 80px;
+}
+
+.btn-link:hover { 
+    background: var(--text-accent); 
+    color: #000; 
+}
+
+/* Contact Interface Styles */
+.contact-container { display: flex; flex-direction: column; gap: 15px; }
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 6px;
+    border-left: 3px solid var(--text-accent);
+}
+
+.contact-item i {
+    font-size: 1.3rem;
+    color: var(--text-accent);
+    min-width: 30px;
+}
+
+.contact-item h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-accent);
+}
+
+.contact-item a {
+    color: inherit;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.contact-item a:hover {
+    color: var(--text-accent);
+    text-decoration: underline;
+}
+
+.contact-item p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+.form-input { width: 100%; padding: 10px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 4px; color: inherit; font-family: inherit; margin-bottom: 10px; }
+
+.form-status {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* Resume Viewer Styling */
+.resume-viewer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.resume-header {
+    border-bottom: 2px solid var(--text-accent);
+    padding-bottom: 15px;
+}
+
+.resume-header h2 {
+    margin: 0 0 5px;
+    color: var(--text-accent);
+    font-size: 1.6rem;
+}
+
+.resume-header p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #999;
+}
+
+.resume-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.resume-contact span {
+    color: #999;
+}
+
+.resume-contact i {
+    margin-right: 5px;
+    color: var(--text-accent);
+    width: 15px;
+}
+
+.resume-section {
+    border-left: 3px solid var(--text-accent);
+    padding-left: 12px;
+}
+
+.resume-section h3 {
+    margin: 10px 0 8px;
+    color: var(--text-accent);
+    font-size: 1.1rem;
+}
+
+.resume-item {
+    margin-bottom: 12px;
+}
+
+.resume-item h4 {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.resume-item p {
+    margin: 3px 0;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.resume-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   AI Assistant System Engine Widget
+   ========================================================================== */
+.ai-widget {
+    position: fixed; bottom: 65px; right: 20px; width: 320px; max-width: 90vw; z-index: 999; overflow: hidden;
+}
+.ai-header { padding: 12px; background: rgba(0,0,0,0.2); cursor: pointer; display: flex; justify-content: space-between; font-weight: bold; font-size: 0.85rem; color: var(--text-accent); }
+.ai-body { height: 280px; display: flex; flex-direction: column; background: rgba(0,0,0,0.1); }
+.ai-chat-history { flex-grow: 1; padding: 12px; overflow-y: auto; font-size: 0.8rem; display: flex; flex-direction: column; gap: 10px; }
+.ai-msg { padding: 8px 12px; border-radius: 6px; max-width: 85%; width: fit-content; line-height: 1.4; }
+.ai-msg.bot { background: rgba(255,255,255,0.05); border-left: 3px solid var(--text-accent); align-self: flex-start; }
+.ai-msg.user { background: var(--text-accent); color: #000; align-self: flex-end; }
+.ai-input-area { display: flex; border-top: 1px solid var(--border-color); }
+.ai-input-area input { flex-grow: 1; padding: 10px; background: transparent; border: none; outline: none; color: inherit; font-family: inherit; font-size: 0.8rem; }
+.ai-input-area button { background: transparent; border: none; color: var(--text-accent); padding: 0 15px; cursor: pointer; }
+
+/* ==========================================================================
+   Taskbar Operational Environment
+   ========================================================================== */
+.taskbar {
+    position: fixed; bottom: 0; left: 0; width: 100vw; height: 50px; background: var(--taskbar-bg);
+    border-top: 1px solid var(--border-color); display: flex; align-items: center; padding: 0 15px; justify-content: space-between; z-index: 10000;
+}
+
+.start-btn {
+    background: var(--text-accent); color: #000; border: none; padding: 6px 12px; font-weight: bold; border-radius: 4px; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 5px;
+}
+
+.active-tasks { display: flex; gap: 8px; margin-left: 15px; flex-grow: 1; overflow-x: auto; }
+.task-tab { padding: 5px 10px; font-size: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); border-radius: 4px; cursor: pointer; white-space: nowrap; }
+.task-tab.active { border-color: var(--text-accent); background: rgba(255,255,255,0.1); }
+
+.system-tray { display: flex; align-items: center; gap: 15px; font-size: 0.8rem; }
+.theme-selector-container { display: flex; align-items: center; gap: 5px; }
+.theme-selector-container select { background: rgba(0,0,0,0.3); color: inherit; border: 1px solid var(--border-color); padding: 3px; border-radius: 4px; outline: none; font-family: inherit; cursor: pointer; }
+
+/* Start Menu System Overlay */
+.start-menu {
+    position: fixed; bottom: 55px; left: 15px; width: 260px; z-index: 10001; padding: 10px 0;
+}
+.start-menu-header { padding: 10px 15px; font-size: 0.75rem; color: #888; border-bottom: 1px solid var(--border-color); margin-bottom: 5px; }
+.start-menu-item { padding: 10px 15px; font-size: 0.85rem; cursor: pointer; display: flex; align-items: center; gap: 10px; }
+.start-menu-item:hover { background: rgba(255,255,255,0.05); color: var(--text-accent); }
+.start-menu hr { border: 0; border-top: 1px solid var(--border-color); margin: 5px 0; }
+
+/* ==========================================================================
+   Responsive Design & Mobile Optimization
+   ========================================================================== */
+
+/* Tablet & Small Screens */
+@media (max-width: 768px) {
+    .desktop-icons {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 300px;
+        grid-gap: 15px;
+    }
+    
+    .window {
+        width: 90vw !important;
+        max-width: 90vw;
+    }
+    
+    .ai-widget {
+        width: 85vw;
+        max-width: 85vw;
+        bottom: 60px;
+        right: 10px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .desktop-icons {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 200px;
+        grid-gap: 10px;
+    }
+    
+    .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+    
+    .desktop-icon span {
+        font-size: 0.7rem;
+    }
+    
+    .window {
+        width: 95vw !important;
+        max-width: 95vw;
+        min-height: 50vh;
+    }
+    
+    .window-body {
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+    
+    .taskbar {
+        height: 45px;
+        padding: 0 10px;
+    }
+    
+    .start-btn {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .system-tray {
+        gap: 8px;
+        font-size: 0.7rem;
+    }
+    
+    .theme-selector-container select {
+        padding: 2px 4px;
+        font-size: 0.7rem;
+    }
+    
+    .ai-widget {
+        width: 90vw;
+        bottom: 50px;
+        right: 5px;
+        max-width: 90vw;
+    }
+    
+    .ai-body {
+        height: 200px;
+    }
+    
+    .btn-action, .btn-link {
+        font-size: 0.75rem;
+        padding: 8px 12px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .contact-item i {
+        font-size: 1.1rem;
+    }
+
+    .skill-category {
+        padding: 10px;
+    }
+
+    .resume-header h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1400px) {
+    .desktop-icons {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 550px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

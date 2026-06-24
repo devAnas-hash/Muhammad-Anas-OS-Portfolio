@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Anas OS - Developer Portfolio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="custom-cursor"></div>
+
+    <div id="boot-screen" class="boot-screen">
+        <div class="boot-content">
+            <div class="boot-logo"><i class="fa-solid fa-terminal"></i></div>
+            <h1 class="boot-title">Initializing Muhammad Anas OS...</h1>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+            <div id="boot-logs" class="boot-logs"></div>
+        </div>
+    </div>
+
+    <div id="desktop" class="desktop-environment hidden">
+        
+        <div class="desktop-icons">
+            <div class="desktop-icon" onclick="openWindow('about-win')">
+                <div class="icon-wrapper glass"><i class="fa-solid fa-user-gear"></i></div>
+                <span>About_Me.sys</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('skills-win')">
+                <div class="icon-wrapper glass"><i class="fa-solid fa-code-branch"></i></div>
+                <span>Core_Skills.dat</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('projects-win')">
+                <div class="icon-wrapper glass"><i class="fa-solid fa-cubes"></i></div>
+                <span>Apps_&_Projects</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('resume-win')">
+                <div class="icon-wrapper glass"><i class="fa-solid fa-file-pdf"></i></div>
+                <span>Resume_Viewer</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('contact-win')">
+                <div class="icon-wrapper glass"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <span>Contact_Center</span>
+            </div>
+            <div class="desktop-icon" onclick="openWindow('terminal-win')">
+                <div class="icon-wrapper glass terminal-icon-style"><i class="fa-solid fa-terminal"></i></div>
+                <span>System_Terminal</span>
+            </div>
+        </div>
+
+        <div id="about-win" class="window glass hidden">
+            <div class="window-header">
+                <span class="window-title"><i class="fa-solid fa-user-gear"></i> About_Me.sys</span>
+                <div class="window-controls">
+                    <button class="ctrl min" onclick="minimizeWindow('about-win')"></button>
+                    <button class="ctrl max" onclick="maximizeWindow('about-win')"></button>
+                    <button class="ctrl close" onclick="closeWindow('about-win')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <h2>Hello, I'm Muhammad Anas</h2>
+                <p class="subtitle">Software Engineering Student | Frontend Developer | Tech Enthusiast</p>
+                <hr>
+                <p><strong>Location:</strong> Karachi, Sindh, Pakistan</p>
+                <p>Detail-oriented professional with hands-on experience in software development, financial data management, and human resources operations. I'm currently pursuing a BS in Computer Science while building expertise in frontend development, UI/UX design, and full-stack applications.</p>
+                
+                <h3>Professional Background</h3>
+                <ul>
+                    <li><strong>Software Intern</strong> @ Toyota Creek Motors (Nov-Dec 2024) - Contributed to development and testing of software applications</li>
+                    <li><strong>Finance Intern</strong> @ Toyota Creek Motors (Jan-Feb 2025) - Analyzed financial data and prepared reports</li>
+                    <li><strong>HR Intern</strong> @ Toyota Creek Motors (Sep-Nov 2024) - Assisted with recruitment and employee documentation</li>
+                </ul>
+                
+                <h3>Current Focus</h3>
+                <ul>
+                    <li><strong>Building:</strong> Modern, responsive web applications with clean code</li>
+                    <li><strong>Learning:</strong> Advanced React patterns, backend development, and system design</li>
+                    <li><strong>Philosophy:</strong> Write clean code, optimize intentionally, focus on user experience</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="skills-win" class="window glass hidden">
+            <div class="window-header">
+                <span class="window-title"><i class="fa-solid fa-code-branch"></i> Core_Skills.dat</span>
+                <div class="window-controls">
+                    <button class="ctrl min" onclick="minimizeWindow('skills-win')"></button>
+                    <button class="ctrl max" onclick="maximizeWindow('skills-win')"></button>
+                    <button class="ctrl close" onclick="closeWindow('skills-win')"></button>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h4>Frontend Technologies</h4>
+                        <div class="skill-item"><span>HTML5 / CSS3</span><div class="meter"><span style="width: 90%"></span></div></div>
+                        <div class="skill-item"><span>JavaScript (ES6+)</span><div class="meter"><span style="width: 80%"></span></div></div>
+                        <div class="skill-item"><span>Responsive Design</span><div class="meter"><span style="width: 85%"></span></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend & Core</h4>
+                        <div class="skill-item"><span>Python</span><div class="meter"><span style="width: 75%"></span></div></div>
+                        <div class="skill-item"><span>Basic Coding</span><div class="meter"><span style="width: 70%"></span></div></div>
+                        <div class="skill-item"><span>Data Management</span><div class="meter"><span style="width: 80%"></span></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Professional Tools</h4>
+                        <div class="skill-item"><span>MS Office Suite</span><div class="meter"><span style="width: 85%"></span></div></div>
+                        <div class="skill-item"><span>Git & Version Control</span><div class="meter"><span style="width: 80%"></span></div></div>
+                        <div class="skill-item"><span>VS Code & IDEs</span><div class="meter"><span style="width: 85%"></span></div></div>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Soft Skills</h4>
+                        <div class="skill-item"><span>Attention to Detail</span><div class="meter"><span style="width: 90%"></span></div></div>
+                        <div class="skill-item"><span>Quick Learner</span><div class="meter"><span style="width: 90%"></span></div></div>
+                        <div class="skill-item"><span>Teamwork & Communication</span><div class="meter"><span style="width: 85%"></span></div></div>
+                        <div class="skill-item"><span>Time Management</span><div class="meter"><span style="width: 85%"></span></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projects-win" class="window glass hidden">
+            <div class="window-header">
+                <span class="window-title"><i class="fa-solid fa-cubes"></i> Apps_&_Projects</span>
+                <div class="window-controls">
+                    <button class="ctrl min" onclick="minimizeWindow('projects-win')"></button>
+                    <button class="ctrl max" onclick="maximizeWindow('projects-win')"></button>
+                    <button class="ctrl close" onclick="closeWindow('projects-win')"></button>
+                </div>
+            </div>
+            <div class="window-body projects-grid">
+                <div class="project-card">
+                    <div class="proj-img-placeholder"><i class="fa-solid fa-laptop"></i></div>
+                    <h5>Muhammad Anas OS Portfolio</h5>
+                    <p>An interactive operating system-themed developer portfolio showcasing skills, projects, and experience with a unique glassmorphic UI design.</p>
+                    <small>Stack: HTML5, CSS3, Vanilla JavaScript</small>
+                    <small class="tech-tags"><strong>Features:</strong> Responsive, Multi-theme, Terminal Interface, AI Assistant</small>
+                    <div class="proj-actions">
+                        <a href="https://github.com/devAnas-hash/Muhammad-Anas-OS-Portfolio" target="_blank" class="btn-link"><i class="fa-brands fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="proj-img-placeholder"><i class="fa-solid fa-code"></i></div>
+                    <h5>Upcoming Projects</h5>
+                    <p>Currently developing new projects to showcase practical skills in frontend development, backend systems, and full-stack applications.</p>
+                    <small>Stack: React, Python, databases</small>
+                    <small class="tech-tags"><strong>Focus:</strong> User Experience, Code Quality, Performance</small>
+                    <div class="proj-actions">
+                        <span class="btn-link disabled"><i class="fa-solid fa-hourglass-end"></i> In Progress</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="resume-win" class="window glass hidden">
+            <div class="window-header">
+                <span class="window-title"><i class="fa-solid fa-file-pdf"></i> Resume_Viewer</span>
+                <div class="window-controls">
+                    <button class="ctrl min" onclick="minimizeWindow('resume-win')"></button>
+                    <button class="ctrl max" onclick="maximizeWindow('resume-win')"></button>
+                    <button class="ctrl close" onclick="closeWindow('resume-win')"></button>
+                </div>
+            </div>
+            <div class="window-body resume-body">
+                <div class="resume-viewer">
+                    <div class="resume-header">
+                        <h2>Muhammad Anas</h2>
+                        <p>Software Engineering Student | Frontend Developer</p>
+                        <div class="resume-contact">
+                            <span><i class="fa-solid fa-location-dot"></i> Karachi, Sindh, Pakistan</span>
+                            <span><i class="fa-solid fa-envelope"></i> raoanas606@gmail.com</span>
+                            <span><i class="fa-solid fa-phone"></i> +92 321 3921501</span>
+                        </div>
+                    </div>
+                    <hr>
+                    
+                    <div class="resume-section">
+                        <h3>Education</h3>
+                        <div class="resume-item">
+                            <h4>BS Computer Science</h4>
+                            <p><strong>Salim Habib University</strong> - Karachi | Sep 2025 - Present</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>DAE Software Engineering</h4>
+                            <p><strong>Aptech Metro</strong> | 2024 - 2026</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>DAE - CIT (Computer Information Technology)</h4>
+                            <p><strong>Sham Shad Grammar College</strong> | 2023 - 2025</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3>Professional Experience</h3>
+                        <div class="resume-item">
+                            <h4>Software Department Intern</h4>
+                            <p><strong>Toyota Creek Motors (PVT) Limited</strong> - Karachi | Nov 2024 - Dec 2024</p>
+                            <p>Contributed to developing and testing software applications, honed coding and debugging skills under expert guidance.</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>Finance Department Intern</h4>
+                            <p><strong>Toyota Creek Motors (PVT) Limited</strong> - Karachi | Jan 2025 - Feb 2025</p>
+                            <p>Assisted in analyzing financial data and preparing reports, enhanced skills in budgeting and financial operations.</p>
+                        </div>
+                        <div class="resume-item">
+                            <h4>Human Resources Intern</h4>
+                            <p><strong>Toyota Creek Motors (PVT) Limited</strong> - Karachi | Sep 2024 - Nov 2024</p>
+                            <p>Assisted with recruitment, maintained employee documentation, and supported HR operations. Enhanced communication and organizational skills.</p>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3>Technical Skills</h3>
+                        <p><strong>Core:</strong> HTML5, CSS3, JavaScript (ES6+), Python, Basic Coding</p>
+                        <p><strong>Tools & Platforms:</strong> VS Code, Git, GitHub, MS Office Suite, Data Entry Software</p>
+                        <p><strong>Specializations:</strong> Responsive Web Design, Data Management, Spreadsheet Management, File Management</p>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3>Soft Skills</h3>
+                        <p>Attention to Detail, Quick Learner, Teamwork, Time Management, Problem Solving, Communication, Organizational Skills</p>
+                    </div>
+
+                    <div class="resume-actions">
+                        <a href="resume.pdf" download class="btn-action">
+                            <i class="fa-solid fa-download"></i> Download Full Resume (PDF)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contact-win" class="window glass hidden">
+            <div class="window-header">
+                <span class="window-title"><i class="fa-solid fa-envelope-open-text"></i> Contact_Center</span>
+                <div class="window-controls">
+                    <button class="ctrl min" onclick="minimizeWindow('contact-win')"></button>
+                    <button class="ctrl max" onclick="maximizeWindow('contact-win')"></button>
+                    <button class="ctrl close" onclick="closeWindow('contact-win')"></button>
+                </div>
+            </div>
+            <div class="window-body contact-container">
+                <h3>Get in Touch</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:raoanas606@gmail.com">raoanas606@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <a href="tel:+923213921501">+92 321 3921501</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Karachi, Sindh, Pakistan</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-github"></i>
+                        <div>
+                            <h4>GitHub</h4>
+                            <a href="https://github.com/devAnas-hash" target="_blank">https://github.com/devAnas-hash</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/anas-rao-638b082b4" target="_blank">https://www.linkedin.com/in/anas-rao-638b082b4</a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h3>Send a Message</h3>
+                <form class="contact-form" id="contact-form" onsubmit="handleContactForm(event)">
+                    <input type="text" id="sender-name" placeholder="Your Name" required class="form-input">
+                    <input type="email" id="sender-email" placeholder="Your Email" required class="form-input">
+                    <textarea id="sender-message" placeholder="Your Message" required class="form-input" rows="4"></textarea>
+                    <button type="submit" class="btn-action">Send Message</button>
+                    <small id="form-status" class="form-status"></small>
+                </form>
+            </div>
+        </div>
+
+        <div id="terminal-win" class="window glass hidden">
+            <div class="window-header">
+                <span class="window-title"><i class="fa-solid fa-terminal"></i> root@anas_os:~</span>
+                <div class="window-controls">
+                    <button class="ctrl min" onclick="minimizeWindow('terminal-win')"></button>
+                    <button class="ctrl max" onclick="maximizeWindow('terminal-win')"></button>
+                    <button class="ctrl close" onclick="closeWindow('terminal-win')"></button>
+                </div>
+            </div>
+            <div class="window-body terminal-body" onclick="document.getElementById('term-input').focus()">
+                <div id="terminal-output"></div>
+                <div class="terminal-input-line">
+                    <span class="prompt">anas_os:~$&nbsp;</span>
+                    <input type="text" id="term-input" autocomplete="off" autofocus>
+                </div>
+            </div>
+        </div>
+
+        <div id="ai-assistant" class="ai-widget glass">
+            <div class="ai-header" onclick="toggleAIWidget()">
+                <span><i class="fa-solid fa-robot"></i> Anas_AI Subsystem</span>
+                <i id="ai-toggle-icon" class="fa-solid fa-chevron-up"></i>
+            </div>
+            <div id="ai-body" class="ai-body hidden">
+                <div id="ai-chat-history" class="ai-chat-history">
+                    <div class="ai-msg bot">System Initialized. Query me regarding Muhammad Anas's credentials, technical skills, or past projects.</div>
+                </div>
+                <div class="ai-input-area">
+                    <input type="text" id="ai-input" placeholder="Type a system query...">
+                    <button onclick="sendAIOps()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="taskbar glass">
+            <button class="start-btn" onclick="toggleMenu()"><i class="fa-solid fa-shield-halved"></i> OS Core</button>
+            <div id="active-tasks" class="active-tasks"></div>
+            
+            <div class="system-tray">
+                <div class="theme-selector-container">
+                    <i class="fa-solid fa-palette"></i>
+                    <select id="theme-switcher" onchange="switchSystemTheme(this.value)">
+                        <option value="dark">Dark OS</option>
+                        <option value="hacker">Hacker Terminal</option>
+                        <option value="professional">Pro Corporate</option>
+                    </select>
+                </div>
+                <div id="live-clock" class="live-clock">00:00:00 AM</div>
+            </div>
+        </div>
+
+        <div id="start-menu" class="start-menu glass hidden">
+            <div class="start-menu-header">Muhammad Anas OS v1.0.0</div>
+            <div class="start-menu-item" onclick="openWindow('about-win'); toggleMenu();"><i class="fa-solid fa-user-gear"></i> About Me</div>
+            <div class="start-menu-item" onclick="openWindow('skills-win'); toggleMenu();"><i class="fa-solid fa-code-branch"></i> Skills Module</div>
+            <div class="start-menu-item" onclick="openWindow('projects-win'); toggleMenu();"><i class="fa-solid fa-cubes"></i> System Apps</div>
+            <div class="start-menu-item" onclick="openWindow('terminal-win'); toggleMenu();"><i class="fa-solid fa-terminal"></i> Core Terminal</div>
+            <hr>
+            <div class="start-menu-item" onclick="location.reload();"><i class="fa-solid fa-power-off"></i> Reboot System</div>
+        </div>
+
+    </div>
+
+    <script src="js/theme.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form handler
+        function handleContactForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('sender-name').value;
+            const email = document.getElementById('sender-email').value;
+            const message = document.getElementById('sender-message').value;
+            const statusEl = document.getElementById('form-status');
+            
+            // Simulate form submission
+            statusEl.textContent = 'Sending message...';
+            statusEl.style.color = 'var(--text-accent)';
+            
+            setTimeout(() => {
+                statusEl.textContent = '✓ Message received! I will get back to you soon.';
+                statusEl.style.color = '#00ca4e';
+                document.getElementById('contact-form').reset();
+                
+                // Optional: Log the message (in a real app, this would send to a server)
+                console.log('Contact message:', { name, email, message });
+            }, 800);
+        }
+    </script>
+</body>
+</html>
